@@ -1,0 +1,5 @@
+mkdir -p public
+
+CSS_FILE="$(pwd)/public/app.css"
+OUTPUT_CSS=$CSS_FILE rustup run nightly wasm-pack build --no-typescript --dev --target no-modules --out-dir ./public
+cp index.html public/
