@@ -1,7 +1,7 @@
 use std::include_bytes;
 
 // 都需要在入口处挂在导入包
-mod psd;
+pub mod psd;
 mod sections;
 use crate::psd::Psd;
 

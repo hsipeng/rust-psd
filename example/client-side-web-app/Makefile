@@ -1,6 +1,6 @@
 .PHONY: clean
 
-build: clean
+build:
 	./build.sh
 serve:
 	http-server ./public --open

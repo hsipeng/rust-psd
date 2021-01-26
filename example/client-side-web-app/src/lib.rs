@@ -6,6 +6,8 @@ use web_sys::MouseEvent;
 
 use css_rs_macro::css;
 use virtual_dom_rs::prelude::*;
+use rust_psd::psd::Psd;
+use std::include_bytes;
 
 #[wasm_bindgen]
 struct App {
@@ -36,6 +38,14 @@ impl App {
                 class=MY_COMPONENT_CSS
                 onclick=|_event: MouseEvent| {
                    web_sys::console::log_1(&"Button Clicked!".into());
+                   let context = include_bytes!("../../../example.psd");
+                    // println!("context is : {:#?}", context);
+                    
+                    let psd = Psd::from_bytes(context).unwrap();
+                    // web_sys::console::log_1(&psd);
+                    console_log!("psd file is : {:#?}", psd);
+                    // println!("fileHeader is : {:#?}", psd);
+
                 }
               >
                 // No need to wrap text in quotation marks (:
@@ -66,3 +76,10 @@ static _MORE_CSS: &'static str = css!{r#"
   color: blue;
 }
 "#};
+
+#[macro_export]
+macro_rules! console_log {
+  // Note that this is using the `log` function imported above during
+  // `bare_bones`
+  ($($t:tt)*) => (web_sys::console::log_1(&format_args!($($t)*).to_string().into()))
+}
