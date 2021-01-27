@@ -8,11 +8,11 @@ help:  ## Display this help
 test: ## test
 	cargo test
 
-start: ## 启动 air 热更新
+start: ## 启动
 	cargo run
 
 clean: ## 执行清理
 	cargo clean
 
-build: clean ## 打包 先格式化
+build: clean ## 打包
 	cargo build
