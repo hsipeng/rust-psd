@@ -45,3 +45,16 @@ impl Psd {
         })
     }
 }
+
+// Methods for working with the file section header
+impl Psd {
+    /// The width of the PSD file
+    pub fn width(&self) -> u32 {
+        self.file_header_section.width.0
+    }
+
+    /// The height of the PSD file
+    pub fn height(&self) -> u32 {
+        self.file_header_section.height.0
+    }
+}
